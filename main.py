@@ -20,19 +20,3 @@ def return_rx(trial: clinical_trial):
 if __name__ == '__main__':
     uvicorn.run(app)
 
-
-
-
-@app.route('/processjson', methods=['POST'])
-def processjson():
-        
-    data = request.get_json()
-
-    entities = data['NCTnumber']
-    
-    trail_info = trial_scrape(entities)
-   
-    return jsonify({'Trial Details': trail_info})
-
-if __name__ == '__main__':
-    app.run(debug=True)
